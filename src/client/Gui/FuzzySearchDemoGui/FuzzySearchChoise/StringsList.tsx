@@ -3,6 +3,7 @@ import { useAtom } from "@rbxts/react-charm";
 import { FuzzySearchDemoGuiController } from "client/Controllers/FuzzySearchDemoGuiController";
 import { FuzzySearchDemoGuiResources } from "client/Resources/FuzzySearchDemoGuiResources";
 import { DefaultStroke } from "../Components/DefaultStroke";
+import { SoundController } from "client/Controllers/SoundController";
 
 function Value(props: { Value: string }) {
 	const [delete_hovered, SetDeleteHovered] = useState(false);
@@ -35,9 +36,15 @@ function Value(props: { Value: string }) {
 				Size={UDim2.fromOffset(35, 35)}
 				Image={FuzzySearchDemoGuiResources.TRASH_BIN_ICON}
 				Event={{
-					MouseEnter: () => SetDeleteHovered(true),
+					MouseEnter: () => {
+						SoundController.PlayHoverSound();
+						SetDeleteHovered(true);
+					},
 					MouseLeave: () => SetDeleteHovered(false),
-					MouseButton1Click: () => FuzzySearchDemoGuiController.RemoveString(props.Value),
+					MouseButton1Click: () => {
+						SoundController.PlayClickSound();
+						FuzzySearchDemoGuiController.RemoveString(props.Value);
+					},
 				}}
 			>
 				<uicorner />

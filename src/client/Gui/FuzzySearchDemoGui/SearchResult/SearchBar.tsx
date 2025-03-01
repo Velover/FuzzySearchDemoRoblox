@@ -1,6 +1,7 @@
 import React from "@rbxts/react";
 import { useAtom } from "@rbxts/react-charm";
 import { FuzzySearchDemoGuiController } from "client/Controllers/FuzzySearchDemoGuiController";
+import { SoundController } from "client/Controllers/SoundController";
 import { FuzzySearchDemoGuiResources } from "client/Resources/FuzzySearchDemoGuiResources";
 import { HorizontalContainer } from "../Components/HorizontalContainer";
 import { Input } from "../Components/Input";
@@ -21,7 +22,10 @@ export function SearchBar(): JSX.Element {
 				BorderSizePixel={0}
 				Size={UDim2.fromOffset(120, 50)}
 				Event={{
-					MouseButton1Click: () => FuzzySearchDemoGuiController.DoSearch(),
+					MouseButton1Click: () => {
+						SoundController.PlayClickSound();
+						FuzzySearchDemoGuiController.DoSearch();
+					},
 				}}
 			>
 				<uicorner />

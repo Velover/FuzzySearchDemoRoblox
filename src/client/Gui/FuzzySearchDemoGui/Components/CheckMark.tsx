@@ -1,6 +1,7 @@
 import React from "@rbxts/react";
 import { FuzzySearchDemoGuiResources } from "client/Resources/FuzzySearchDemoGuiResources";
 import { DefaultStroke } from "./DefaultStroke";
+import { SoundController } from "client/Controllers/SoundController";
 
 export function CheckMark(props: {
 	Value: boolean;
@@ -12,7 +13,10 @@ export function CheckMark(props: {
 			BorderSizePixel={0}
 			Size={UDim2.fromOffset(40, 40)}
 			Event={{
-				MouseButton1Click: () => props.SetValue(!props.Value),
+				MouseButton1Click: () => {
+					SoundController.PlayClickSound();
+					props.SetValue(!props.Value);
+				},
 			}}
 		>
 			<uicorner />

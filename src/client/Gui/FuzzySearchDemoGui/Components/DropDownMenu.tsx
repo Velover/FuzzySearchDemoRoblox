@@ -1,8 +1,9 @@
+import { useEventListener } from "@rbxts/pretty-react-hooks";
 import React, { createContext, useContext, useState } from "@rbxts/react";
+import { UserInputService } from "@rbxts/services";
+import { SoundController } from "client/Controllers/SoundController";
 import { FuzzySearchDemoGuiResources } from "client/Resources/FuzzySearchDemoGuiResources";
 import { DefaultStroke } from "./DefaultStroke";
-import { useEventListener } from "@rbxts/pretty-react-hooks";
-import { UserInputService } from "@rbxts/services";
 
 const choise_context = createContext<{
 	SelectedValue: string;
@@ -29,8 +30,14 @@ function Choise(props: { Text: string }): JSX.Element {
 			Text={""}
 			AutoButtonColor={false}
 			Event={{
-				MouseEnter: () => choise_data.SetHighlightedText(props.Text),
-				MouseButton1Up: () => choise_data.SetChoise(props.Text),
+				MouseEnter: () => {
+					choise_data.SetHighlightedText(props.Text);
+					SoundController.PlayHoverSound();
+				},
+				MouseButton1Up: () => {
+					SoundController.PlayClickSound();
+					choise_data.SetChoise(props.Text);
+				},
 			}}
 		>
 			<uicorner />
@@ -107,7 +114,10 @@ export function DropDownMenu(props: {
 			TextSize={FuzzySearchDemoGuiResources.TEXT_SIZE}
 			TextXAlignment={Enum.TextXAlignment.Left}
 			Event={{
-				MouseButton1Click: () => SetIsOpened(true),
+				MouseButton1Click: () => {
+					SoundController.PlayClickSound();
+					SetIsOpened(true);
+				},
 			}}
 		>
 			<uicorner />

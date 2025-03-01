@@ -1,8 +1,9 @@
 import React, { useState } from "@rbxts/react";
+import { FuzzySearchDemoGuiController } from "client/Controllers/FuzzySearchDemoGuiController";
+import { SoundController } from "client/Controllers/SoundController";
+import { FuzzySearchDemoGuiResources } from "client/Resources/FuzzySearchDemoGuiResources";
 import { HorizontalContainer } from "../Components/HorizontalContainer";
 import { Input } from "../Components/Input";
-import { FuzzySearchDemoGuiResources } from "client/Resources/FuzzySearchDemoGuiResources";
-import { FuzzySearchDemoGuiController } from "client/Controllers/FuzzySearchDemoGuiController";
 
 export function StringsInput() {
 	const [string_value, SetStringValue] = useState("");
@@ -15,7 +16,10 @@ export function StringsInput() {
 				BorderSizePixel={0}
 				Size={UDim2.fromOffset(50, 50)}
 				Event={{
-					MouseButton1Click: () => FuzzySearchDemoGuiController.AddString(string_value),
+					MouseButton1Click: () => {
+						SoundController.PlayClickSound();
+						FuzzySearchDemoGuiController.AddString(string_value);
+					},
 				}}
 			>
 				<uicorner />
