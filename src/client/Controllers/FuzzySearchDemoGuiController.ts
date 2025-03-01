@@ -36,7 +36,7 @@ export namespace FuzzySearchDemoGuiController {
 
 	const algorithms_require_tokenization = [ESearchAlgorithm.CosineTextSimilarity];
 
-	const selected_algorithm_atom = atom(ESearchAlgorithm.FuzzyScore);
+	const selected_algorithm_atom = atom(ESearchAlgorithm.JaroWinkler);
 	const selected_tokenization_atom = atom(ETokenization.Word);
 	const selected_n_atom = atom(3);
 	const selected_search_query_atom = atom("");
