@@ -75,7 +75,7 @@ function Choise(props: { Text: string }): JSX.Element {
 						? FuzzySearchDemoGuiResources.HIGHLIGHTED_TEXT_COLOR
 						: FuzzySearchDemoGuiResources.TEXT_COLOR
 				}
-				TextSize={16}
+				TextSize={FuzzySearchDemoGuiResources.TEXT_SIZE}
 				TextXAlignment={Enum.TextXAlignment.Left}
 			/>
 		</textbutton>
