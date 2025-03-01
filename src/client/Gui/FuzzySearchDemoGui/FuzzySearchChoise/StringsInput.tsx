@@ -9,7 +9,11 @@ export function StringsInput() {
 	const [string_value, SetStringValue] = useState("");
 	return (
 		<HorizontalContainer>
-			<Input PlaceholderText={"Add new strings..."} Text={string_value} SetText={SetStringValue} />
+			<Input
+				PlaceholderText={"Add new strings separated by comas..."}
+				Text={string_value}
+				SetText={SetStringValue}
+			/>
 			<imagebutton
 				key={"Add"}
 				BackgroundColor3={FuzzySearchDemoGuiResources.ADD_BUTTON_COLOR}
