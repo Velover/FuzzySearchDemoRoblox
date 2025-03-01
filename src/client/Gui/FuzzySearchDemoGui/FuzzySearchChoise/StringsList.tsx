@@ -59,6 +59,12 @@ export function StringsList() {
 			ScrollingDirection={Enum.ScrollingDirection.Y}
 			VerticalScrollBarInset={Enum.ScrollBarInset.ScrollBar}
 		>
+			<uipadding
+				PaddingBottom={new UDim(0.0, 5)}
+				PaddingLeft={new UDim(0.0, 5)}
+				PaddingRight={new UDim(0.0, 5)}
+				PaddingTop={new UDim(0.0, 5)}
+			/>
 			<uilistlayout SortOrder={Enum.SortOrder.LayoutOrder} Padding={new UDim(0.0, 12)} />
 			{strings_list.map((value, i) => (
 				<Value key={i} Value={value} />
